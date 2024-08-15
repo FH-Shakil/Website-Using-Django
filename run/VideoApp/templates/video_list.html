@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>Video List</h1>
+    <form method="GET" action="{% url 'video_list' %}">
+        <input type="text" name="q" placeholder="Search..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for video in videos %}
+            <li>
+                <a href="{% url 'video_detail' video.id %}">{{ video.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

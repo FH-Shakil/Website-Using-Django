@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ video.title }}</title>
+</head>
+<body>
+    <h1>{{ video.title }}</h1>
+    <iframe width="560" height="315" src="{{ video.link }}" frameborder="0" allowfullscreen></iframe>
+    
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.text }} ({{ comment.created_at }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Add a Comment</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="comment" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'video_list' %}">Back to List</a>
+</body>
+</html>
